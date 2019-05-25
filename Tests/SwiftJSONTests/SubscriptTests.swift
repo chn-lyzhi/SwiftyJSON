@@ -141,11 +141,19 @@ class SubscriptTests: XCTestCase {
         XCTAssertTrue(json["a"] == "aoo")
         XCTAssertEqual(json["bb"], JSON("bpp"))
         XCTAssertTrue(json["z"] == "zoo")
+        
+        XCTAssertTrue((json.bb.object as? String) == "bpp")
 
         json["bb"] = "update"
         XCTAssertTrue(json["a"] == "aoo")
         XCTAssertTrue(json["bb"] == "update")
         XCTAssertTrue(json["z"] == "zoo")
+        
+        XCTAssertTrue(json.a == "aoo")
+        XCTAssertTrue(json.bb == "update")
+        XCTAssertTrue(json.z == "zoo")
+        
+        XCTAssertTrue(json.bb.string == "update")
     }
 
     func testDictionaryWithNull() {

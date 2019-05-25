@@ -8,8 +8,9 @@ You must have to build `SwiftyJSON iOS` package for import.
 /*:
 ### Basic setting for playground
 */
-import SwiftyJSON
+
 import Foundation
+import SwiftyJSON
 
 var jsonData: Data?
 
@@ -69,6 +70,10 @@ let json: JSON = JSON([
 
 // Getting a double from a JSON Array
 json["array"][0].double
+
+let b = json.users[1]
+b.feeds[0]
+json.users[1].info.email
 
 // Getting an array of string from a JSON Array
 let arrayOfString = json["users"].arrayValue.map({$0["info"]["name"]})

@@ -78,7 +78,7 @@ public enum Type: Int {
 }
 
 // MARK: - JSON Base
-
+@dynamicMemberLookup
 public struct JSON {
 
 	/**
@@ -365,6 +365,14 @@ extension String: JSONSubscriptType {
 }
 
 extension JSON {
+    
+    public subscript(dynamicMember member: String) -> JSON {
+        return self[member]
+    }
+    
+    public subscript<T>(dynamicMember member: String) -> T? {
+        return self[member].object as? T
+    }
 
     /// If `type` is `.array`, return json whose object is `array[index]`, otherwise return null json with error.
     fileprivate subscript(index index: Int) -> JSON {
